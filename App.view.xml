@@ -3,25 +3,26 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
       <VBox>
-      <Panel
-            headerText="Please enter you thought."
-            width="100%">
-            <content>
-              <VBox>
-                <TextArea
-                  width="100%"
-                  growing="true"
-                  valueLiveUpdate="true"
-                  value="{InputModel>/InputValue}"/>
-                <Button
-                  text="Submit"
-                  press="saveNote"/>
-              </VBox>
-            </content>
-      </Panel>
-      <List
-        items="{ListModel>/noteList}">
-        <StandardListItem
-          title="{note}"/>
-      </List>
+        <Panel
+              headerText="Please enter you thought."
+              width="100%">
+              <content>
+                <VBox>
+                  <TextArea
+                    width="100%"
+                    growing="true"
+                    valueLiveUpdate="true"
+                    value="{InputModel>/InputValue}"/>
+                  <Button
+                    text="Submit"
+                    press="saveNote"/>
+                </VBox>
+              </content>
+        </Panel>
+        <List
+          items="{ListModel>/noteList}">
+          <StandardListItem
+            title="{note}"/>
+        </List>
+      </VBox>
 </mvc:View>
