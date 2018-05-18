@@ -21,9 +21,11 @@
         </Panel>
         <List
           items="{ListModel>/noteList}">
-          <items>
-            <Text text="{ListModel>note}"/>
-          </items>
+          <CustomListItem>
+            <HBox>
+              <Text text="{ListModel>note}"/>
+            </HBox>
+          </CustomListItem>
         </List>
       </VBox>
 </mvc:View>
