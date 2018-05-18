@@ -22,7 +22,7 @@
         <List
           items="{ListModel>/noteList}">
           <items>
-            <Text text="{ListModel>note}">
+            <Text text="{ListModel>note}"/>
           </items>
         </List>
       </VBox>
