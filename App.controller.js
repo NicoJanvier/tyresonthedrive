@@ -74,6 +74,13 @@ sap.ui.define([
         },
         onDeleteNote : function(e){
             console.log(e);
+
+            var oItem = e.getSource().getParent().getParent().getParent();
+            var sPath = oItem.getBindingContextPath();
+            var sIndex = sPath.slice(("/notelist/").length);
+
+            var aNewList = this.getView().getModel("ListModel").getData().noteList.slice(parseInt(sIndex));
+            this.getView().getModel("ListModel").setData({nodeList : aNewList});
         },
         onEditNote : function(e){
             console.log(e);
