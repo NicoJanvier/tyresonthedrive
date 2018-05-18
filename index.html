@@ -1,22 +1,23 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello World</title>
-    <script id='sap-ui-bootstrap'
-        src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
-        data-sap-ui-theme='sap_belize'
-        data-sap-ui-libs='sap.m'>
-    </script>
-    <script>
-       sap.ui.getCore().attachInit(function () {
-           new sap.m.Button({
-               text: "Say Hello",
-               press: function() {
-                  sap.m.MessageToast.show("Hello World");
-               }
-           }).placeAt("content");
-       });
-   </script>
-  </head>
-  <body class='sapUiBody' id='content'>
-  </body>
+<head>
+	<title>OpenUI5 Hello World App</title>
+	<script
+		id="sap-ui-bootstrap"
+		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-resourceroots='{"HelloWorld": "./"}'
+		displayBlock="true">
+	</script>
+	<script>
+		sap.ui.getCore().attachInit(function () {
+			sap.ui.xmlview({
+			  viewName: "HelloWorld.App"
+			}).placeAt("content");
+		});
+	</script>
+</head>
+<body class="sapUiBody" id="content">
+</body>
 </html>
