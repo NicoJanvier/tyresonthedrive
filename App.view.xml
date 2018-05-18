@@ -14,8 +14,8 @@
               <TextArea
                 growing="true"
                 valueLiveUpdate="true"
-                value="{/InputValue}"/>
-                <Text value="{/InputValue}"/>
+                value="{InputModel>/InputValue}"/>
+                <Text value="{InputModel>/InputValue}"/>
             </content>
           </Panel>
       <!-- <Button

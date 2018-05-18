@@ -6,7 +6,7 @@ sap.ui.define([
     return Controller.extend("HelloWorld.App", {
         onInit: function () {
 			var oModel = new JSONModel({data: {}});
-			this.getView().setModel(oModel);
+			this.getView().setModel(oModel, "InputModel");
         },
         onShowHello : function () {
             MessageToast.show("Hello World");
