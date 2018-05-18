@@ -80,8 +80,8 @@ sap.ui.define([
             var oItem = e.getSource().getParent().getParent().getParent();
             var sPath = oItem.getBindingContextPath();
             var sIndex = sPath.slice(("/notelist/").length);
-
-            var aNewList = this.getView().getModel("ListModel").getData().noteList.splice(parseInt(sIndex),1);
+            var aNewList = this.getView().getModel("ListModel").getData().noteList;
+            aNewList.splice(parseInt(sIndex),1);
             this.getView().getModel("ListModel").setData({noteList : aNewList});
             this.updateLocalStorage();
         },
