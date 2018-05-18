@@ -2,12 +2,7 @@
   controllerName="HelloWorld.App"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
-      <Page title="TyresOnTheDrive Test">
-        <content>        
-          <Text value="This is a quicknote app."/>
-          
-        </content>
-      </Page>
+      <VBox>
       <Panel
             headerText="Please enter you thought.">
             <content>
@@ -25,4 +20,5 @@
         text="Say Hello"
         press="onShowHello"
         class="sapUiSmallMargin"/>
+      </VBox>
 </mvc:View>
