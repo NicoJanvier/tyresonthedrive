@@ -21,8 +21,9 @@
         </Panel>
         <List
           items="{ListModel>/noteList}">
-          <StandardListItem
-            title="{note}"/>
+          <items>
+            <Text text="{ListModel>note}">
+          </items>
         </List>
       </VBox>
 </mvc:View>
