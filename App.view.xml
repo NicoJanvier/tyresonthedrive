@@ -17,11 +17,11 @@
           </Panel>
         </content>
       </Page>
-      <Button
+      <!-- <Button
         id="helloButton"
         type="Emphasized"
         icon="sap-icon://sap-ui5"
         text="Say Hello"
         press="onShowHello"
-        class="sapUiSmallMargin"/>
+        class="sapUiSmallMargin"/> -->
 </mvc:View>
