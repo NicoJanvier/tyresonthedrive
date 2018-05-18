@@ -15,9 +15,9 @@
                 growing="true"
                 valueLiveUpdate="true"
                 value="{InputModel>/InputValue}"/>
-                <Text value="Input: {InputModel>/InputValue}"/>
             </content>
-          </Panel>
+      </Panel>
+      <Text value="Input: {InputModel>/InputValue}"/>
       <Button
         id="helloButton"
         type="Emphasized"
