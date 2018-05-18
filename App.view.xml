@@ -4,12 +4,16 @@
   xmlns="sap.m">
       <VBox>
       <Panel
-            headerText="Please enter you thought.">
+            headerText="Please enter you thought."
+            width="100%">
             <content>
               <TextArea
                 growing="true"
                 valueLiveUpdate="true"
                 value="{InputModel>/InputValue}"/>
+              <Button
+                text="Submit"
+                press="saveNote"/>
             </content>
       </Panel>
       <Text text="{InputModel>/InputValue}"/>
