@@ -62,12 +62,14 @@ sap.ui.define([
             let oListModel = this.getView().getModel("ListModel");
             oListModel.getData().noteList.push(oNewNote);
             oListModel.refresh(true);
-
+            this.updateLocalStorage();           
+        },
+        updateLocalStorage: function(){
+            let oListModel = this.getView().getModel("ListModel");
             let bStorageAvalaible = this.storageAvailable();
             if(!bStorageAvalaible){
                 MessageToast.show("Local Storage unavailable")
             }else{
-
                 var oStorage = window['localStorage'];
                 oStorage.setItem('noteList', JSON.stringify(oListModel.getData()));
             }
@@ -80,7 +82,8 @@ sap.ui.define([
             var sIndex = sPath.slice(("/notelist/").length);
 
             var aNewList = this.getView().getModel("ListModel").getData().noteList.slice(parseInt(sIndex));
-            this.getView().getModel("ListModel").setData({nodeList : aNewList});
+            this.getView().getModel("ListModel").setData({noteList : aNewList});
+            this.updateLocalStorage();
         },
         onEditNote : function(e){
             console.log(e);
