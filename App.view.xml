@@ -2,7 +2,21 @@
   controllerName="HelloWorld.App"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
-      <Page title="TyresOnTheDrive Test"/>
+      <Page title="TyresOnTheDrive Test">
+        <content>        
+          <Text>This is a quicknote app.</Text>
+          <Panel
+            headerText="Please enter you thought.">
+            <content>
+              <TextArea
+                growing="true"
+                valueLiveUpdate="true"
+                value="{/InputValue}"/>
+                <Text value="{/InputValue}"/>
+            </content>
+          </Panel>
+        </content>
+      </Page>
       <Button
         id="helloButton"
         type="Emphasized"
