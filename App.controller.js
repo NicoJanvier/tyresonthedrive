@@ -6,6 +6,10 @@ sap.ui.define([
     return Controller.extend("HelloWorld.App", {
        onShowHello : function () {
           MessageToast.show("Hello World");
+          this.onTest();
+       },
+       onTest : function() {
+            MessageToast.show("Test");
        }
     });
  });
