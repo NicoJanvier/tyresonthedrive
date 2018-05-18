@@ -22,9 +22,11 @@
         <List
           items="{ListModel>/noteList}">
           <CustomListItem>
-            <HBox>
+            <HBox
+              justifyContent="SpaceBetween">
               <Text text="{ListModel>note}"/>
-              <VBox>
+              <VBox
+                justifyContent="SpaceAround">
                 <Button
                 icon="sap-icon://decline"
                 press= "onDeleteNote"/>
