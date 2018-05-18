@@ -24,6 +24,14 @@
           <CustomListItem>
             <HBox>
               <Text text="{ListModel>note}"/>
+              <VBox>
+                <Button
+                icon="sap-icon://decline"
+                press= "onDeleteNote"/>
+                <Button
+                icon="sap-icon://edit"
+                press= "onEditNote"/>
+              </VBox>              
             </HBox>
           </CustomListItem>
         </List>

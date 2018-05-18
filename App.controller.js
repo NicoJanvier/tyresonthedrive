@@ -5,7 +5,7 @@ sap.ui.define([
     "use strict";
     return Controller.extend("HelloWorld.App", {
         onInit: function () {
-            var oInputModel = new JSONModel({data: {}});
+            var oInputModel = new JSONModel({});
             var oListModel = new JSONModel({});
             this.getView().setModel(oInputModel, "InputModel");
             this.getView().setModel(oListModel, "ListModel");
@@ -53,6 +53,7 @@ sap.ui.define([
         },
         saveNote : function(){
             let sInputValue = this.getView().getModel("InputModel").getData()["InputValue"];
+            this.getView().getModel("InputModel").setData({InputValue: ""});
             let oNewNote = {
                 "note": sInputValue,
                 "date": new Date()
@@ -62,14 +63,20 @@ sap.ui.define([
             oListModel.getData().noteList.push(oNewNote);
             oListModel.refresh(true);
 
-            // let bStorageAvalaible = this.storageAvailable();
-            // if(!bStorageAvalaible){
-            //     MessageToast.show("Local Storage unavailable")
-            // }else{
+            let bStorageAvalaible = this.storageAvailable();
+            if(!bStorageAvalaible){
+                MessageToast.show("Local Storage unavailable")
+            }else{
 
-            //     var oStorage = window['localStorage'];
-            //     oStorage.setItem
-            // }
+                var oStorage = window['localStorage'];
+                oStorage.setItem('noteList', oListModel.getData());
+            }
+        },
+        onDeleteNote : function(e){
+            console.log(e);
+        },
+        onEditNote : function(e){
+            console.log(e);
         }
     });
  });
