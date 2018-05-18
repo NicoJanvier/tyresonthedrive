@@ -5,7 +5,10 @@
       <Page title="TyresOnTheDrive Test">
         <content>        
           <Text value="This is a quicknote app."/>
-          <Panel
+          
+        </content>
+      </Page>
+      <Panel
             headerText="Please enter you thought.">
             <content>
               <TextArea
@@ -15,8 +18,6 @@
                 <Text value="{/InputValue}"/>
             </content>
           </Panel>
-        </content>
-      </Page>
       <!-- <Button
         id="helloButton"
         type="Emphasized"
