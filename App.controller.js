@@ -16,7 +16,7 @@ sap.ui.define([
                 if(!oStorage){
                     this.getView().getModel("ListModel").setData({noteList: []});
                 }else{
-                    this.getView().getModel("ListModel").setData(oStorage);
+                    this.getView().getModel("ListModel").setData(JSON.parse(oStorage));
                 }
                 
             }
