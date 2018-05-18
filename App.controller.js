@@ -12,8 +12,13 @@ sap.ui.define([
 
             let bStorageAvalaible = this.storageAvailable();
             if(bStorageAvalaible){
-                var oStorage = window['localStorage'];
-                this.getView().getModel("ListModel").setData(oStorage.getItem("noteList"));
+                var oStorage = window['localStorage'].getItem("noteList");
+                if(!oStorage){
+                    this.getView().getModel("ListModel").setData({noteList: []});
+                }else{
+                    this.getView().getModel("ListModel").setData(oStorage);
+                }
+                
             }
         },
         onShowHello : function () {
