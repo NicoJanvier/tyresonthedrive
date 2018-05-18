@@ -52,7 +52,7 @@ sap.ui.define([
             }
         },
         saveNote : function(){
-            let sInputValue = this.getView.getModel("InputModel").getData()["InputValue"];
+            let sInputValue = this.getView().getModel("InputModel").getData()["InputValue"];
             let oNewNote = {
                 "note": sInputValue,
                 "date": new Date()

@@ -7,22 +7,21 @@
             headerText="Please enter you thought."
             width="100%">
             <content>
-              <TextArea
-                growing="true"
-                valueLiveUpdate="true"
-                value="{InputModel>/InputValue}"/>
-              <Button
-                text="Submit"
-                press="saveNote"/>
+              <VBox>
+                <TextArea
+                  width="100%"
+                  growing="true"
+                  valueLiveUpdate="true"
+                  value="{InputModel>/InputValue}"/>
+                <Button
+                  text="Submit"
+                  press="saveNote"/>
+              </VBox>
             </content>
       </Panel>
-      <Text text="{InputModel>/InputValue}"/>
-      <Button
-        id="helloButton"
-        type="Emphasized"
-        icon="sap-icon://sap-ui5"
-        text="Say Hello"
-        press="onShowHello"
-        class="sapUiSmallMargin"/>
-      </VBox>
+      <List
+        items="{ListModel>/noteList}">
+        <StandardListItem
+          title="{note}"/>
+      </List>
 </mvc:View>
