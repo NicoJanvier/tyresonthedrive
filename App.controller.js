@@ -60,6 +60,7 @@ sap.ui.define([
 
             let oListModel = this.getView().getModel("ListModel");
             oListModel.getData().noteList.push(oNewNote);
+            oListModel.refresh(true);
 
             // let bStorageAvalaible = this.storageAvailable();
             // if(!bStorageAvalaible){
