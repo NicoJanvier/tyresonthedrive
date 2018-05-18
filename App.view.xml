@@ -12,7 +12,7 @@
                 value="{InputModel>/InputValue}"/>
             </content>
       </Panel>
-      <Text text="Input: {InputModel>/InputValue}"/>
+      <Text text="{InputModel>/InputValue}"/>
       <Button
         id="helloButton"
         type="Emphasized"
