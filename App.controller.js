@@ -69,7 +69,7 @@ sap.ui.define([
             }else{
 
                 var oStorage = window['localStorage'];
-                oStorage.setItem('noteList', JSON.stringify(oListModel.getData());
+                oStorage.setItem('noteList', JSON.stringify(oListModel.getData()));
             }
         },
         onDeleteNote : function(e){
