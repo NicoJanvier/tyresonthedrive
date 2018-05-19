@@ -46,7 +46,7 @@
                   <content>
                     <VBox>
                       <Text text="{ListModel>note}"/>
-                      <Text class="dateNote" text="{ListModel>date}"/>
+                      <Text class="dateNote" text="{ListModel>dateString}"/>
                     </VBox>
                   </content>
                 </Panel>
