@@ -33,11 +33,13 @@
                 <Panel
                   expanded="true">
                   <headerToolbar>
-                    <Label text="{ListModel>title}"/>
-                    <ToolbarSpacer/>
-                    <Button
-                      icon="sap-icon://decline"
-                      press= "onDeleteNote"/>
+                    <Toolbar>
+                      <Label text="{ListModel>title}"/>
+                      <ToolbarSpacer/>
+                      <Button
+                        icon="sap-icon://decline"
+                        press= "onDeleteNote"/>
+                    </Toolbar>                    
                   </headerToolbar>
                   <content>
                     <VBox>
