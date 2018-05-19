@@ -3,6 +3,7 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
     <Page
+      height="-webkit-fill-available"
       enableScrolling="false"
       showFooter="false"
       backgroundDesign="List">
@@ -18,9 +19,9 @@
           </contentRight>
         </Bar>
       </customHeader>
-      <content
-        height="max-content">
+      <content>
         <ScrollContainer
+          height="100%"
           vertical="true"
           horizontal="false">
           <content>

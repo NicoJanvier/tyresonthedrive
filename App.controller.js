@@ -109,10 +109,10 @@ sap.ui.define([
             this.updateLocalStorage();
         },
         onEditNote : function(e){
-            console.log(e);
-            this.onOpenDialog(false);
             var oItem = e.getSource().getParent().getParent().getParent();
             var sPath = oItem.getBindingContextPath();
+            this.getView().getModel("InputModel").setData({InputValue: ""});
+            this.onOpenDialog(false);
            
 
         }
