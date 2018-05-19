@@ -21,7 +21,7 @@ sap.ui.define([
                 
             }
         },
-        onOpenDialog : function (bNewNote) {
+        onOpenDialog : function () {
             var oCtrl = this;
 			var oView = this.getView();
 			var oDialog = oView.byId("noteDialog");
@@ -32,10 +32,10 @@ sap.ui.define([
 				// connect dialog to view (models, lifecycle)
 				oView.addDependent(oDialog);
             }
-            var sTitle = bNewNote ? "New note" : "Edit note";
+            var sTitle = this.getView().getModel("InputModel").getData().editedPath ? "New note" : "Edit note";
+            
             oDialog.setTitle(sTitle);
-
-			oDialog.open();
+            oDialog.open();
         },
         onCloseDialog : function(){
             var oView = this.getView();
@@ -43,7 +43,11 @@ sap.ui.define([
             oDialog.close();
         },
         onNewNote : function() {
-            this.onOpenDialog(true);
+            this.getView().getModel("InputModel").setData({
+                InputValue: '',
+                editedPath: undefined
+            });
+            this.onOpenDialog();
         },
         // onShowHello : function () {
         //     MessageToast.show("Hello World");
@@ -76,16 +80,21 @@ sap.ui.define([
             }
         },
         saveNote : function(){
-            let sInputValue = this.getView().getModel("InputModel").getData()["InputValue"];
-            this.getView().getModel("InputModel").setData({InputValue: ""});
+            let sInputValue = this.getView().getModel("InputModel").getData().InputValue;
             let oNewNote = {
                 "note": sInputValue,
                 "date": new Date()
             };
 
             let oListModel = this.getView().getModel("ListModel");
-            oListModel.getData().noteList.push(oNewNote);
-            oListModel.refresh(true);
+            let sEditedPath = this.getView().getModel("InputModel").getData().editedPath;
+
+            if(sEditedPath){
+                oListModel.setProperty(sEditedPath, oNewNote);
+            }else{
+                oListModel.getData().noteList.push(oNewNote);
+                oListModel.refresh(true);
+            }            
             this.updateLocalStorage();
             this.onCloseDialog();         
         },
@@ -111,8 +120,11 @@ sap.ui.define([
         onEditNote : function(e){
             var oItem = e.getSource().getParent().getParent().getParent();
             var sPath = oItem.getBindingContextPath();
-            this.getView().getModel("InputModel").setData({InputValue: ""});
-            this.onOpenDialog(false);
+            this.getView().getModel("InputModel").setData({
+                InputValue: this.getView().getModel("ListModel").getProperty(sPath).note,
+                editedPath: sPath
+            });
+            this.onOpenDialog();
            
 
         }
