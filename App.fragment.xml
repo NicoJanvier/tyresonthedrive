@@ -12,6 +12,6 @@
             press="saveNote"/>
     </buttons>
     <content>
-        <Text text="Dialog">
+        <Text text="Dialog"/>
     </content>
 </Dialog>
