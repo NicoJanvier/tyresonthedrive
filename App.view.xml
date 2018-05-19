@@ -3,6 +3,7 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
     <Page
+      id="mainPage"
       height="-webkit-fill-available"
       enableScrolling="false"
       showFooter="false"
