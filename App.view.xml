@@ -28,8 +28,7 @@
           <content>
             <List
               items="{ListModel>/noteList}">
-              <CustomListItem
-                press="onEditNote">
+              <CustomListItem>
                 <Panel
                   expanded="true">
                   <headerToolbar>
@@ -37,8 +36,11 @@
                       <Label text="{ListModel>title}"/>
                       <ToolbarSpacer/>
                       <Button
-                        icon="sap-icon://decline"
+                        icon="sap-icon://edit"
                         press= "onDeleteNote"/>
+                      <Button
+                        icon="sap-icon://decline"
+                        press= "onEditNote"/>
                     </Toolbar>                    
                   </headerToolbar>
                   <content>

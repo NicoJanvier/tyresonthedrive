@@ -23,7 +23,7 @@
                 <Select
                     id="tagSelect"
                     width="30%"
-                    items="{TagModel>tags}">
+                    items="{TagModel>/tags}">
                     <core:ListItem
                         key="{TagModel>id}"
                         text="{TagModel>text}"
