@@ -30,7 +30,23 @@
               items="{ListModel>/noteList}">
               <CustomListItem
                 press="onEditNote">
-                <HBox
+                <Panel
+                  expanded="true">
+                  <headerToolbar>
+                    <Label text="{ListModel>title}"/>
+                    <ToolbarSpacer/>
+                    <Button
+                      icon="sap-icon://decline"
+                      press= "onDeleteNote"/>
+                  </headerToolbar>
+                  <content>
+                    <VBox>
+                      <Text text="{ListModel>note}"/>
+                      <Text text="{path: 'ListModel>date', formatter: 'util.Formatter.dateFormatter' ]"/>
+                    </VBox>
+                  </content>
+                </Panel>
+                <!-- <HBox
                   justifyContent="SpaceBetween">
                   <Text text="{ListModel>note}"/>
                   <VBox
@@ -39,7 +55,7 @@
                     icon="sap-icon://decline"
                     press= "onDeleteNote"/>
                   </VBox>              
-                </HBox>
+                </HBox> -->
               </CustomListItem>
             </List>
           </content>

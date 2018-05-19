@@ -1,9 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast", 'sap/ui/model/json/JSONModel'
- ], function (Controller, MessageToast, JSONModel) {
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/demo/wt/model/formatter"
+ ], function (Controller, MessageToast, JSONModel, formatter) {
     "use strict";
     return Controller.extend("HelloWorld.App", {
+        formatter: util.formatter,
         onInit: function () {
             var oInputModel = new JSONModel({});
             var oListModel = new JSONModel({});
