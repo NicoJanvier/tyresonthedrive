@@ -37,16 +37,16 @@
                       <ToolbarSpacer/>
                       <Button
                         icon="sap-icon://edit"
-                        press= "onEditNote"/>
+                        press="onEditNote"/>
                       <Button
                         icon="sap-icon://decline"
-                        press= "onDeleteNote"/>
+                        press="onDeleteNote"/>
                     </Toolbar>                    
                   </headerToolbar>
                   <content>
                     <VBox>
                       <Text text="{ListModel>note}"/>
-                      <Text text="Posted: {ListModel>date}"/>
+                      <Text class="dateNote" text="{ListModel>date}"/>
                     </VBox>
                   </content>
                 </Panel>
