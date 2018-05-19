@@ -21,13 +21,34 @@ sap.ui.define([
                 
             }
         },
-        onShowHello : function () {
-            MessageToast.show("Hello World");
-            this.onTest();
+        onOpenDialog : function () {
+			var oView = this.getView();
+			var oDialog = oView.byId("noteDialog");
+			// create dialog lazily
+			if (!oDialog) {
+				// create dialog via fragment factory
+				oDialog = sap.ui.xmlfragment(oView.getId(), "HelloWorld.App");
+				// connect dialog to view (models, lifecycle)
+				oView.addDependent(oDialog);
+			}
+
+			oDialog.open();
         },
-        onTest : function() {
-            MessageToast.show("Test");
+        onCloseDialog : function(){
+            var oView = this.getView();
+            var oDialog = oView.byId("noteDialog");
+            oDialog.close();
         },
+        onNewNote : function() {
+            this.onOpenDialog();
+        },
+        // onShowHello : function () {
+        //     MessageToast.show("Hello World");
+        //     this.onTest();
+        // },
+        // onTest : function() {
+        //     MessageToast.show("Test");
+        // },
         storageAvailable : function() {
             try {
                 var storage = window['localStorage'],

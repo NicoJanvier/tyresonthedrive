@@ -2,7 +2,50 @@
   controllerName="HelloWorld.App"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
-      <VBox>
+    <Page
+      enableScrolling="false"
+      showFooter="false"
+      backgroundDesign="List">
+      <customHeader>
+        <Bar>
+          <contentMiddle>
+            <Text text="Note App"/>
+          </contentMiddle>
+          <contentRight>
+            <Button
+              icon="sap-icon://add"
+              press="onNewNote"/>
+          </contentRight>
+        </Bar>
+      </customHeader>
+      <content>
+        <ScrollContainer
+          vertical="true"
+          horizontal="false">
+          <content>
+            <List
+              items="{ListModel>/noteList}">
+              <CustomListItem>
+                <HBox
+                  justifyContent="SpaceBetween">
+                  <Text text="{ListModel>note}"/>
+                  <VBox
+                    justifyContent="SpaceAround">
+                    <Button
+                    icon="sap-icon://decline"
+                    press= "onDeleteNote"/>
+                    <Button
+                    icon="sap-icon://edit"
+                    press= "onEditNote"/>
+                  </VBox>              
+                </HBox>
+              </CustomListItem>
+            </List>
+          </content>
+        </ScrollContainer>
+      </content>
+    </Page>
+      <!-- <VBox>
         <Panel
               headerText="Please enter you thought."
               width="100%">
@@ -37,5 +80,5 @@
             </HBox>
           </CustomListItem>
         </List>
-      </VBox>
+      </VBox> -->
 </mvc:View>

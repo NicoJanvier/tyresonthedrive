@@ -1,0 +1,17 @@
+<Dialog
+    xmlns="sap.m"
+    id="noteDialog"
+	title="New note"
+    stretch="true">
+    <buttons>
+        <Button
+            text="Close"
+            press="onCloseDialog"/>
+        <Button
+            text="Submit"
+            press="saveNote"/>
+    </buttons>
+    <content>
+        <Text text="Dialog">
+    </content>
+</Dialog>
