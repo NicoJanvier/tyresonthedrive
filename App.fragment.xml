@@ -1,5 +1,6 @@
 <Dialog
     xmlns="sap.m"
+    xmlns:core="sap.ui.core"
     id="noteDialog"
 	title="New note"
     stretch="true">
@@ -12,9 +13,27 @@
             press="saveNote"/>
     </buttons>
     <content>
-        <TextArea
-            width="100%"
-            growing="true"
-            value="{InputModel>/InputValue}"/>
+        <VBox>
+            <HBox>
+                <Input
+                    width="70%"
+                    type="Text"
+                    placeholder="Title"
+                    value="{InputModel>/InputTitle}"/>
+                <Select
+                    id="tagSelect"
+                    width="30%"
+                    items="{TagModel>tags}">
+                    <core:ListItem
+                        key="{TagModel>id}"
+                        text="{TagModel>text}"
+                        icon="{TagModel>icon}"/>
+                </Select>
+            </HBox>
+            <TextArea
+                width="100%"
+                growing="true"
+                value="{InputModel>/InputValue}"/>
+        </VBox>        
     </content>
 </Dialog>

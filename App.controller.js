@@ -6,11 +6,7 @@ sap.ui.define([
     "use strict";
     return Controller.extend("HelloWorld.App", {
         onInit: function () {
-            var oInputModel = new JSONModel({});
-            var oListModel = new JSONModel({});
-            this.getView().setModel(oInputModel, "InputModel");
-            this.getView().setModel(oListModel, "ListModel");
-
+            this.instantiateModels();
             let bStorageAvalaible = this.storageAvailable();
             if(bStorageAvalaible){
                 var oStorage = window['localStorage'].getItem("noteList");
@@ -21,6 +17,29 @@ sap.ui.define([
                 }
                 
             }
+        },
+        instantiateModels : function() {
+            var oInputModel = new JSONModel({});
+            var oListModel = new JSONModel({});
+            this.getView().setModel(oInputModel, "InputModel");
+            this.getView().setModel(oListModel, "ListModel");
+
+            var oTagModel = new JSONModel({
+                tags: [
+                    {
+                        id: 'work',
+                        text: 'Work',
+                        icon: 'sap-icon://activity-individual'
+                    },
+                    {
+                        id: 'travel',
+                        text: 'Travel',
+                        icon: 'sap-icon://flight'
+                    },
+                ]
+            });
+            this.getView().setModel(oTagModel, "TagModel");
+
         },
         onOpenDialog : function () {
             var oCtrl = this;
@@ -84,7 +103,8 @@ sap.ui.define([
             let sInputValue = this.getView().getModel("InputModel").getData().InputValue;
             let oNewNote = {
                 "note": sInputValue,
-                "date": new Date()
+                "date": new Date(),
+                "tag": null
             };
 
             let oListModel = this.getView().getModel("ListModel");
