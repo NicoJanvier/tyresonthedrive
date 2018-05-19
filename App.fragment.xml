@@ -12,6 +12,9 @@
             press="saveNote"/>
     </buttons>
     <content>
-        <Text text="Dialog"/>
+        <TextArea
+            width="100%"
+            growing="true"
+            value="{InputModel>/InputValue}"/>
     </content>
 </Dialog>
