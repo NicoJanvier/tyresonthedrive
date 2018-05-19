@@ -141,8 +141,8 @@ sap.ui.define([
             this.updateLocalStorage();
         },
         onEditNote : function(e){
-            // var oItem = e.getSource().getParent().getParent().getParent();
-            var oItem = e.getSource();
+            var oItem = e.getSource().getParent().getParent().getParent();
+            // var oItem = e.getSource();
             var sPath = oItem.getBindingContextPath();
             this.getView().getModel("InputModel").setData({
                 InputValue: this.getView().getModel("ListModel").getProperty(sPath).note,

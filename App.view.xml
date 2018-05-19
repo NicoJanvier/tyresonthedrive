@@ -37,10 +37,10 @@
                       <ToolbarSpacer/>
                       <Button
                         icon="sap-icon://edit"
-                        press= "onDeleteNote"/>
+                        press= "onEditNote"/>
                       <Button
                         icon="sap-icon://decline"
-                        press= "onEditNote"/>
+                        press= "onDeleteNote"/>
                     </Toolbar>                    
                   </headerToolbar>
                   <content>

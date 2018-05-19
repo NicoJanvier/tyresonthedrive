@@ -16,13 +16,11 @@
         <VBox>
             <HBox>
                 <Input
-                    width="70%"
                     type="Text"
                     placeholder="Title"
                     value="{InputModel>/InputTitle}"/>
                 <Select
                     id="tagSelect"
-                    width="30%"
                     items="{TagModel>/tags}">
                     <core:ListItem
                         key="{TagModel>id}"
