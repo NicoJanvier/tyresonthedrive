@@ -106,7 +106,7 @@ sap.ui.define([
             let oNewNote = {
                 "title": sTitle,
                 "note": sInputValue,
-                "date": sDate.toLocaleString,
+                "date": sDate.toLocaleString(),
                 "tag": null
             };
 

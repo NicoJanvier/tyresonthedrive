@@ -1,3 +1,8 @@
 #__xmlview0--mainPage {
-    height: -webkit-fill-available
+    height: -webkit-fill-available;
+    
+}
+.dateNote {
+    color: grey;
+    font-style: italic;    
 }
