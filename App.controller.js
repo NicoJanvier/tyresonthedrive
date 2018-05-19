@@ -21,7 +21,7 @@ sap.ui.define([
                 
             }
         },
-        onOpenDialog : function () {
+        onOpenDialog : function (bNewNote) {
             var oCtrl = this;
 			var oView = this.getView();
 			var oDialog = oView.byId("noteDialog");
@@ -31,7 +31,9 @@ sap.ui.define([
 				oDialog = sap.ui.xmlfragment(oView.getId(), "HelloWorld.App", oCtrl);
 				// connect dialog to view (models, lifecycle)
 				oView.addDependent(oDialog);
-			}
+            }
+            var sTitle = bNewNote ? "New note" : "Edit note";
+            oDialog.setTitle(sTitle);
 
 			oDialog.open();
         },
@@ -41,7 +43,7 @@ sap.ui.define([
             oDialog.close();
         },
         onNewNote : function() {
-            this.onOpenDialog();
+            this.onOpenDialog(true);
         },
         // onShowHello : function () {
         //     MessageToast.show("Hello World");

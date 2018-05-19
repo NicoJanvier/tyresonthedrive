@@ -3,7 +3,7 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
     <Page
-      enableScrolling="false"
+      enableScrolling="true"
       showFooter="false"
       backgroundDesign="List">
       <customHeader>
