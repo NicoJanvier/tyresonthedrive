@@ -32,7 +32,7 @@ sap.ui.define([
 				// connect dialog to view (models, lifecycle)
 				oView.addDependent(oDialog);
             }
-            var sTitle = this.getView().getModel("InputModel").getData().editedPath ? "New note" : "Edit note";
+            var sTitle = this.getView().getModel("InputModel").getData().editedPath === undefined ? "New note" : "Edit note";
             
             oDialog.setTitle(sTitle);
             oDialog.open();
@@ -118,7 +118,8 @@ sap.ui.define([
             this.updateLocalStorage();
         },
         onEditNote : function(e){
-            var oItem = e.getSource().getParent().getParent().getParent();
+            // var oItem = e.getSource().getParent().getParent().getParent();
+            var oItem = e.getSource();
             var sPath = oItem.getBindingContextPath();
             this.getView().getModel("InputModel").setData({
                 InputValue: this.getView().getModel("ListModel").getProperty(sPath).note,

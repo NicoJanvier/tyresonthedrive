@@ -28,7 +28,8 @@
           <content>
             <List
               items="{ListModel>/noteList}">
-              <CustomListItem>
+              <CustomListItem
+                press="onEditNote">
                 <HBox
                   justifyContent="SpaceBetween">
                   <Text text="{ListModel>note}"/>
@@ -37,9 +38,6 @@
                     <Button
                     icon="sap-icon://decline"
                     press= "onDeleteNote"/>
-                    <Button
-                    icon="sap-icon://edit"
-                    press= "onEditNote"/>
                   </VBox>              
                 </HBox>
               </CustomListItem>
