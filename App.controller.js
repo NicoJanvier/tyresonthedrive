@@ -22,12 +22,13 @@ sap.ui.define([
             }
         },
         onOpenDialog : function () {
+            var oCtrl = this;
 			var oView = this.getView();
 			var oDialog = oView.byId("noteDialog");
 			// create dialog lazily
 			if (!oDialog) {
 				// create dialog via fragment factory
-				oDialog = sap.ui.xmlfragment(oView.getId(), "HelloWorld.App");
+				oDialog = sap.ui.xmlfragment(oView.getId(), "HelloWorld.App", oCtrl);
 				// connect dialog to view (models, lifecycle)
 				oView.addDependent(oDialog);
 			}
