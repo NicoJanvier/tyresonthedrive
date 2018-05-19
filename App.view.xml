@@ -46,7 +46,7 @@
                   <content>
                     <VBox>
                       <Text text="{ListModel>note}"/>
-                      <Text text="{path: 'ListModel>date', formatter: 'App.dateFormatter'}"/>
+                      <Text text="{path: 'ListModel>date', formatter: '.App.dateFormatter'}"/>
                     </VBox>
                   </content>
                 </Panel>
