@@ -102,10 +102,11 @@ sap.ui.define([
         saveNote : function(){
             let sInputValue = this.getView().getModel("InputModel").getData().InputValue;
             let sTitle = this.getView().getModel("InputModel").getData().InputTitle;
+            let sDate = new Date();
             let oNewNote = {
                 "title": sTitle,
                 "note": sInputValue,
-                "date": new Date(),
+                "date": sDate.toLocaleString,
                 "tag": null
             };
 
@@ -152,9 +153,6 @@ sap.ui.define([
             this.onOpenDialog();
            
 
-        },
-        dateFormatter : function(date) {
-            return "17/12/1991"
         }
     });
  });
