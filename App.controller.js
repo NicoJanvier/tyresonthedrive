@@ -86,7 +86,8 @@ sap.ui.define([
             let oListModel = this.getView().getModel("ListModel");
             oListModel.getData().noteList.push(oNewNote);
             oListModel.refresh(true);
-            this.updateLocalStorage();           
+            this.updateLocalStorage();
+            this.onCloseDialog();         
         },
         updateLocalStorage: function(){
             let oListModel = this.getView().getModel("ListModel");
@@ -99,8 +100,6 @@ sap.ui.define([
             }
         },
         onDeleteNote : function(e){
-            console.log(e);
-
             var oItem = e.getSource().getParent().getParent().getParent();
             var sPath = oItem.getBindingContextPath();
             var sIndex = sPath.slice(("/notelist/").length);
@@ -111,6 +110,11 @@ sap.ui.define([
         },
         onEditNote : function(e){
             console.log(e);
+            this.onOpenDialog(false);
+            var oItem = e.getSource().getParent().getParent().getParent();
+            var sPath = oItem.getBindingContextPath();
+           
+
         }
     });
  });

@@ -18,7 +18,8 @@
           </contentRight>
         </Bar>
       </customHeader>
-      <content>
+      <content
+        height="max-content">
         <ScrollContainer
           vertical="true"
           horizontal="false">
