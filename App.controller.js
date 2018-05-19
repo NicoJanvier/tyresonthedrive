@@ -146,6 +146,7 @@ sap.ui.define([
             var sPath = oItem.getBindingContextPath();
             this.getView().getModel("InputModel").setData({
                 InputValue: this.getView().getModel("ListModel").getProperty(sPath).note,
+                InputTitle: this.getView().getModel("ListModel").getProperty(sPath).title,
                 editedPath: sPath
             });
             this.onOpenDialog();
