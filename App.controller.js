@@ -175,7 +175,8 @@ sap.ui.define([
                 "dateString": sDate.toLocaleString(),
                 "date": sDate,
                 "tag": sTag,
-                "tagKey": sTagKey
+                "tagKey": sTagKey,
+                "archived": false
             };
 
             // let oListModel = this.getView().getModel("ListModel");
