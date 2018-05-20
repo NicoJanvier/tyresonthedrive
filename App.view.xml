@@ -11,7 +11,9 @@
       <customHeader>
         <Bar>
           <contentMiddle>
-            <Text text="Note App"/>
+            <Label
+              text="Note App"
+              design="Bold"/>
           </contentMiddle>
           <contentRight>
             <Button
@@ -33,9 +35,13 @@
               <headerToolbar>
                 <Toolbar>
                   <Button
-                    text="Sort"
+                    text="Sort by Date"
                     icon="sap-icon://sort-ascending"
                     press="onPressSort"/>
+                  <Button
+                    text="Sort by Tag"
+                    icon="sap-icon://sort-ascending"
+                    press="onPressSortTag"/>
                 </Toolbar>
               </headerToolbar>
               <CustomListItem>
