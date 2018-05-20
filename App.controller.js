@@ -17,12 +17,21 @@ sap.ui.define([
                     oListModel.setData(JSON.parse(oStorage));
                 }                
             }
-            let oList = this.getView().byId("mainList");
-            if(!oList.sorted && oList.getItems().length > 1){
-                oList.sorted = "desc";
-                oList.getItems().sort(function(a,b){
-                    return (oListModel.getProperty(a.getBindingContextPath()).date > oListModel.getProperty(b.getBindingContextPath()).date) ? 1 : ((oListModel.getProperty(a.getBindingContextPath()).date < oListModel.getProperty(b.getBindingContextPath()).date) ? -1 : 0);
-                })
+            this.sortList(true);
+        },
+        sortList: function(bDesc){
+            let oView = this.getView();
+            let oList = oView.byId("mainList");
+            let oListModel = oView.getModel("ListModel");
+            let iMult = bDesc ? 1 : -1 ;
+            if(oList.getItems().length > 1){
+                oListModel.getData().noteList.sort((a,b)=>{
+                    let sDateA = oListModel.getProperty(a.getBindingContextPath()).date;
+                    let sDateB = oListModel.getProperty(b.getBindingContextPath()).date;
+                    let iRes = (a>b) ? 1 : ((a<b) ? -1 : 0);
+                    return iRes * iMult
+                });
+                oListModel.refresh();
             }
         },
         instantiateModels : function() {
