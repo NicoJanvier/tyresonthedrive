@@ -29,6 +29,9 @@ sap.ui.define([
                     let iRes = (a[type]>b[type]) ? 1 : ((a[type]<b[type]) ? -1 : 0);
                     return iRes * iMult
                 });
+                if(!oList.sort){
+                    oList.sort = {date: undefined, tag: undefined};
+                }
                 oList.sort[type] = mode;
                 oListModel.refresh();
             }
@@ -38,15 +41,8 @@ sap.ui.define([
             let oList = oView.byId("mainList");
             let sMode = (oList.sort === "desc") ? "asc" : "desc";
             let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
-            this.sortList(sMode, "date");
-            e.getSource().setIcon(sIcon);
-        },
-        onPressSortTag : function(e){
-            let oView = this.getView();
-            let oList = oView.byId("mainList");
-            let sMode = (oList.sortTag === "desc") ? "asc" : "desc";
-            let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
-            this.sortList(sMode, "tag");
+            let sType = (e.getSource().getId() === "sortDate") ? "date" : "tag";
+            this.sortList(sMode, sType);
             e.getSource().setIcon(sIcon);
         },
         instantiateModels : function() {

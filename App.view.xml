@@ -35,13 +35,15 @@
               <headerToolbar>
                 <Toolbar>
                   <Button
+                    id="sortDate"
                     text="Sort by Date"
                     icon="sap-icon://sort-ascending"
                     press="onPressSort"/>
                   <Button
+                    id="sortTag"
                     text="Sort by Tag"
                     icon="sap-icon://sort-ascending"
-                    press="onPressSortTag"/>
+                    press="onPressSort"/>
                 </Toolbar>
               </headerToolbar>
               <CustomListItem>
