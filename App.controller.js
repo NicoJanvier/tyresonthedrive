@@ -7,20 +7,21 @@ sap.ui.define([
     return Controller.extend("HelloWorld.App", {
         onInit: function () {
             this.instantiateModels();
+            let oListModel = this.getView().getModel("ListModel");
             let bStorageAvalaible = this.storageAvailable();
             if(bStorageAvalaible){
                 var oStorage = window['localStorage'].getItem("noteList");
                 if(!oStorage){
-                    this.getView().getModel("ListModel").setData({noteList: []});
+                    oListModel.setData({noteList: []});
                 }else{
-                    this.getView().getModel("ListModel").setData(JSON.parse(oStorage));
+                    oListModel.setData(JSON.parse(oStorage));
                 }                
             }
             let oList = this.getView().byId("mainList");
             if(!oList.sorted && oList.getItems().length > 1){
                 oList.sorted = "desc";
                 oList.getItems().sort(function(a,b){
-                    return (a.date > b.date) ? 1 : ((a.date < b.date) ? -1 : 0);
+                    return (oListModel.getProperty(a.getBindingContextPath()).date > oListModel.getProperty(b.getBindingContextPath()).date) ? 1 : ((oListModel.getProperty(a.getBindingContextPath()).date < oListModel.getProperty(b.getBindingContextPath()).date) ? -1 : 0);
                 })
             }
         },
