@@ -27,6 +27,7 @@
           horizontal="false">
           <content>
             <List
+              id="mainList"
               items="{ListModel>/noteList}">
               <CustomListItem>
                 <Panel
