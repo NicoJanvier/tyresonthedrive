@@ -17,7 +17,36 @@ sap.ui.define([
                     oListModel.setData(JSON.parse(oStorage));
                 }                
             }
+            this.updateListModel();
+        },
+        updateListModel: function(){
+            let oView = this.getView();
+            let oList = oView.byId("mainList");
+            let oListModel = this.getView().getModel("ListModel");
+            let oGlobalModel = this.getView().getModel("GlobalListModel");
+
+            
+            if(!oList.sort){
+                oList.sort = {date: undefined, tag: undefined};
+            }
+            if(!oList.filter){
+                oList.filter = {archived: false};
+            }
+            oListModel.setData(oGlobalModel.getData());
+            this.filterList("archived", oList.filter.archived);
             this.sortList("desc", "date");
+
+        },
+        filterList: function(type, value) {
+            let oView = this.getView();
+            let oList = oView.byId("mainList");
+            let oListModel = this.getView().getModel("ListModel");
+            let oGlobalModel = this.getView().getModel("GlobalListModel");
+
+            let aData = oGlobalModel.getData().noteList.filter((a)=>{
+                return a[type] === value;
+            })
+            oListModel.setData({noteList: aData});
         },
         sortList: function(mode, type){
             let oView = this.getView();
@@ -29,9 +58,6 @@ sap.ui.define([
                     let iRes = (a[type]>b[type]) ? 1 : ((a[type]<b[type]) ? -1 : 0);
                     return iRes * iMult
                 });
-                if(!oList.sort){
-                    oList.sort = {date: undefined, tag: undefined};
-                }
                 oList.sort[type] = mode;
                 oListModel.refresh();
             }
@@ -48,8 +74,10 @@ sap.ui.define([
         instantiateModels : function() {
             var oInputModel = new JSONModel({});
             var oListModel = new JSONModel({});
+            var oGlobalListModel = new JSONModel({});
             this.getView().setModel(oInputModel, "InputModel");
-            this.getView().setModel(oListModel, "ListModel");
+            this.getView().setModel(oListModel, "ListModel");            
+            this.getView().setModel(oGlobalListModel, "GlobalListModel");
 
             var oTagModel = new JSONModel({
                 tags: [
@@ -150,35 +178,42 @@ sap.ui.define([
                 "tagKey": sTagKey
             };
 
-            let oListModel = this.getView().getModel("ListModel");
+            // let oListModel = this.getView().getModel("ListModel");
+            let oGlobalListModel = this.getView().getModel("GlobalListModel");
             let sEditedPath = this.getView().getModel("InputModel").getData().editedPath;
 
             if(sEditedPath){
-                oListModel.setProperty(sEditedPath, oNewNote);
+                oGlobalListModel.setProperty(sEditedPath, oNewNote);
             }else{
-                oListModel.getData().noteList.unshift(oNewNote);
-                oListModel.refresh(true);
-            }            
+                oGlobalListModel.getData().noteList.unshift(oNewNote);
+            }
+            this.updateListModel();            
             this.updateLocalStorage();
             this.onCloseDialog();         
         },
         updateLocalStorage: function(){
-            let oListModel = this.getView().getModel("ListModel");
+            // let oListModel = this.getView().getModel("ListModel");
+            let oGlobalListModel = this.getView().getModel("GlobalListModel");
             let bStorageAvalaible = this.storageAvailable();
             if(!bStorageAvalaible){
                 MessageToast.show("Local Storage unavailable")
             }else{
                 var oStorage = window['localStorage'];
-                oStorage.setItem('noteList', JSON.stringify(oListModel.getData()));
+                oStorage.setItem('noteList', JSON.stringify(oGlobalListModel.getData()));
             }
         },
         onDeleteNote : function(e){
             var oItem = e.getSource().getParent().getParent().getParent();
             var sPath = oItem.getBindingContextPath();
-            var sIndex = sPath.slice(("/notelist/").length);
-            var aNewList = this.getView().getModel("ListModel").getData().noteList;
-            aNewList.splice(parseInt(sIndex),1);
-            this.getView().getModel("ListModel").setData({noteList : aNewList});
+
+            var sDate = this.getView().getModel("ListModel").getProperty(sPath).date;
+
+            var aNewList = this.getView().getModel("GlobalListModel").getData().noteList.filter((obj)=>{
+                return obj.date !== sDate;
+            });
+
+            this.getView().getModel("GlobalListModel").setData({noteList: aNewList});
+            this.updateListModel();
             this.updateLocalStorage();
         },
         onEditNote : function(e){
