@@ -176,7 +176,7 @@ sap.ui.define([
                 "date": sDate,
                 "tag": sTag,
                 "tagKey": sTagKey,
-                "archived": false
+                "archived": false,
             };
 
             // let oListModel = this.getView().getModel("ListModel");
@@ -231,6 +231,9 @@ sap.ui.define([
         onToggleArchived : function(e){
             let bPressed = e.getSource().getProperty("pressed");
             this.filterList("archived", bPressed);
+        },
+        onArchiveSelect : function(e){
+            var oItem = e.getSource().getParent().getParent().getParent();
         }
     });
  });
