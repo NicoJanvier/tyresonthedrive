@@ -28,13 +28,15 @@ sap.ui.define([
                 tags: [
                     {
                         id: 'work',
-                        text: 'Work',
-                        icon: 'sap-icon://activity-individual'
+                        text: 'Work'
                     },
                     {
                         id: 'travel',
-                        text: 'Travel',
-                        icon: 'sap-icon://flight'
+                        text: 'Travel'
+                    },
+                    {
+                        id: 'finance',
+                        text: 'Finances'
                     },
                 ]
             });
@@ -57,7 +59,7 @@ sap.ui.define([
                 sTitle = "New Note";
             }else{
                 sTitle = "Edit Note";
-                var sSelectedTagKey = oView.getModel("ListModel").getProperty(sPath).tagKey;
+                var sSelectedTagKey = oView.getModel("ListModel").getProperty(oView.getModel("InputModel").getData().editedPath).tagKey;
                 oView.byId("tagSelect").setSelectedKey(sSelectedTagKey);
             }
             

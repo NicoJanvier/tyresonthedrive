@@ -24,8 +24,7 @@
                     items="{TagModel>/tags}">
                     <core:ListItem
                         key="{TagModel>id}"
-                        text="{TagModel>text}"
-                        icon="{TagModel>icon}"/>
+                        text="{TagModel>text}"/>
                 </Select>
             </HBox>
             <TextArea
