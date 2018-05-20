@@ -7,14 +7,14 @@ sap.ui.define([
     return Controller.extend("HelloWorld.App", {
         onInit: function () {
             this.instantiateModels();
-            let oListModel = this.getView().getModel("ListModel");
+            let oGlobalModel = this.getView().getModel("GlobalListModel");
             let bStorageAvalaible = this.storageAvailable();
             if(bStorageAvalaible){
                 var oStorage = window['localStorage'].getItem("noteList");
                 if(!oStorage){
-                    oListModel.setData({noteList: []});
+                    oGlobalModel.setData({noteList: []});
                 }else{
-                    oListModel.setData(JSON.parse(oStorage));
+                    oGlobalModel.setData(JSON.parse(oStorage));
                 }                
             }
             this.updateListModel();
