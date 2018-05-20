@@ -39,7 +39,7 @@ sap.ui.define([
         onPressSort : function(e){
             let oView = this.getView();
             let oList = oView.byId("mainList");
-            let sType = (e.getSource().getId() === "sortDate") ? "date" : "tag";
+            let sType = (e.getSource().getId() === "__xmlview0--sortDate") ? "date" : "tag";
             let sMode = (oList.sort[sType] === "desc") ? "asc" : "desc";
             let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
             this.sortList(sMode, sType);
