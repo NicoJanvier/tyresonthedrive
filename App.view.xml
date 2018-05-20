@@ -10,6 +10,11 @@
       backgroundDesign="List">
       <customHeader>
         <Bar>
+          <contentLeft>
+            <Button
+              text="Remove all data"
+              press="onRemoveData"/>
+          </contentLeft>
           <contentMiddle>
             <Label
               text="Note App"

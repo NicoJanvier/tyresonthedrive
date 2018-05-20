@@ -19,6 +19,12 @@ sap.ui.define([
             }
             this.updateListModel();
         },
+        onRemoveData: function(){
+            let bStorageAvalaible = this.storageAvailable();
+            if(bStorageAvalaible){
+                window['localStorage'].removeItem("noteList");
+            }
+        },
         updateListModel: function(){
             let oView = this.getView();
             let oList = oView.byId("mainList");
