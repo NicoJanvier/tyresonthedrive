@@ -14,8 +14,14 @@ sap.ui.define([
                     this.getView().getModel("ListModel").setData({noteList: []});
                 }else{
                     this.getView().getModel("ListModel").setData(JSON.parse(oStorage));
-                }
-                
+                }                
+            }
+            let oList = this.getView().byId("mainList");
+            if(!oList.sorted && oList.getItems().length > 1){
+                oList.sorted = "desc";
+                oList.getItems().sort(function(a,b){
+                    return (a.date > b.date) ? 1 : ((a.date < b.date) ? -1 : 0);
+                })
             }
         },
         instantiateModels : function() {
