@@ -45,7 +45,8 @@ sap.ui.define([
 
             let aData = oGlobalModel.getData().noteList.filter((a)=>{
                 return a[type] === value;
-            })
+            });
+            oList.filter[type] = value;
             oListModel.setData({noteList: aData});
         },
         sortList: function(mode, type){
@@ -234,6 +235,10 @@ sap.ui.define([
         },
         onArchiveSelect : function(e){
             var oItem = e.getSource().getParent().getParent().getParent();
+            var sPath = oItem.getBindingContextPath();
+            var bSelected = e.getParameter("selected");
+            this.updateLocalStorage();
+            this.updateListModel();
         }
     });
  });
