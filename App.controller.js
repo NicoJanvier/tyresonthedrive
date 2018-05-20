@@ -52,7 +52,14 @@ sap.ui.define([
 				// connect dialog to view (models, lifecycle)
 				oView.addDependent(oDialog);
             }
-            var sTitle = this.getView().getModel("InputModel").getData().editedPath === undefined ? "New note" : "Edit note";
+            var sTitle;
+            if(oView.getModel("InputModel").getData().editedPath === undefined){
+                sTitle = "New Note";
+            }else{
+                sTitle = "Edit Note";
+                var sSelectedTagKey = oView.getModel("ListModel").getProperty(sPath).tagKey;
+                oView.byId("tagSelect").setSelectedKey(sSelectedTagKey);
+            }
             
             oDialog.setTitle(sTitle);
             oDialog.open();
@@ -103,12 +110,15 @@ sap.ui.define([
             let sInputValue = this.getView().getModel("InputModel").getData().InputValue;
             let sTitle = this.getView().getModel("InputModel").getData().InputTitle;
             let sDate = new Date();
+            let sTag = this.getView().byId("tagSelect").getSelectedItem().getText();
+            let sTagKey = this.getView().byId("tagSelect").getSelectedItem().getKey();
             let oNewNote = {
                 "title": sTitle,
                 "note": sInputValue,
                 "dateString": sDate.toLocaleString(),
                 "date": sDate,
-                "tag": null
+                "tag": sTag,
+                "tagKey": sTagKey
             };
 
             let oListModel = this.getView().getModel("ListModel");

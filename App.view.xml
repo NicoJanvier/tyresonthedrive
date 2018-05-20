@@ -33,7 +33,11 @@
                   expanded="true">
                   <headerToolbar>
                     <Toolbar>
-                      <Label text="{ListModel>title}"/>
+                      <Label text="{ListModel>tag}"/>
+                      <ToolbarSeparator/>
+                      <Label
+                        text="{ListModel>title}"
+                        design="Bold"/>
                       <ToolbarSpacer/>
                       <Button
                         icon="sap-icon://edit"
