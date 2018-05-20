@@ -227,8 +227,10 @@ sap.ui.define([
                 editedPath: sPath
             });
             this.onOpenDialog();
-           
-
+        },
+        onToggleArchived : function(e){
+            let bPressed = e.getSource().getProperty("pressed");
+            this.filterList("archived", bPressed);
         }
     });
  });
