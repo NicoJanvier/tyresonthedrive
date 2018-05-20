@@ -22,6 +22,7 @@
           </contentMiddle>
           <contentRight>
             <Button
+              text="Create a Note"
               icon="sap-icon://add"
               press="onNewNote"/>
           </contentRight>
