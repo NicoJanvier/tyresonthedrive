@@ -134,13 +134,6 @@ sap.ui.define([
             });
             this.onOpenDialog();
         },
-        // onShowHello : function () {
-        //     MessageToast.show("Hello World");
-        //     this.onTest();
-        // },
-        // onTest : function() {
-        //     MessageToast.show("Test");
-        // },
         storageAvailable : function() {
             try {
                 var storage = window['localStorage'],
@@ -194,7 +187,6 @@ sap.ui.define([
             this.onCloseDialog();         
         },
         updateLocalStorage: function(){
-            // let oListModel = this.getView().getModel("ListModel");
             let oGlobalListModel = this.getView().getModel("GlobalListModel");
             let bStorageAvalaible = this.storageAvailable();
             if(!bStorageAvalaible){
@@ -220,7 +212,6 @@ sap.ui.define([
         },
         onEditNote : function(e){
             var oItem = e.getSource().getParent().getParent().getParent();
-            // var oItem = e.getSource();
             var sPath = oItem.getBindingContextPath();
             this.getView().getModel("InputModel").setData({
                 InputValue: this.getView().getModel("ListModel").getProperty(sPath).note,

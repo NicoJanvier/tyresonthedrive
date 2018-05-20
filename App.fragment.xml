@@ -14,7 +14,8 @@
     </buttons>
     <content>
         <VBox>
-            <HBox>
+            <HBox
+                justifyContent="SpaceBetween">
                 <Input
                     type="Text"
                     placeholder="Title"
