@@ -28,7 +28,16 @@
           <content>
             <List
               id="mainList"
+              noDataText="You have no Note yet!"
               items="{ListModel>/noteList}">
+              <headerToolbar>
+                <Toolbar>
+                  <Button
+                    text="Sort"
+                    icon="sap-icon://sort-ascending"
+                    press="onPressSort"/>
+                </Toolbar>
+              </headerToolbar>
               <CustomListItem>
                 <Panel
                   expanded="true">

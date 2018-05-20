@@ -17,20 +17,29 @@ sap.ui.define([
                     oListModel.setData(JSON.parse(oStorage));
                 }                
             }
-            this.sortList(true);
+            this.sortList("desc");
         },
-        sortList: function(bDesc){
+        sortList: function(mode){
             let oView = this.getView();
             let oList = oView.byId("mainList");
             let oListModel = oView.getModel("ListModel");
-            let iMult = bDesc ? 1 : -1 ;
+            let iMult = (mode === "asc") ? 1 : -1 ;
             if(oList.getItems().length > 1){
                 oListModel.getData().noteList.sort((a,b)=>{
                     let iRes = (a.date>b.date) ? 1 : ((a.date<b.date) ? -1 : 0);
                     return iRes * iMult
                 });
+                oList.sort = mode;
                 oListModel.refresh();
             }
+        },
+        onPressSort : function(e){
+            let oView = this.getView();
+            let oList = oView.byId("mainList");
+            let sMode = (oList.sort === "desc") ? "asc" : "desc";
+            let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
+            this.sortList(sMode);
+            e.getSource().setIcon(sIcon);
         },
         instantiateModels : function() {
             var oInputModel = new JSONModel({});
@@ -143,7 +152,7 @@ sap.ui.define([
             if(sEditedPath){
                 oListModel.setProperty(sEditedPath, oNewNote);
             }else{
-                oListModel.getData().noteList.push(oNewNote);
+                oListModel.getData().noteList.unshift(oNewNote);
                 oListModel.refresh(true);
             }            
             this.updateLocalStorage();
