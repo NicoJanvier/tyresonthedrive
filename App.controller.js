@@ -39,9 +39,9 @@ sap.ui.define([
         onPressSort : function(e){
             let oView = this.getView();
             let oList = oView.byId("mainList");
-            let sMode = (oList.sort === "desc") ? "asc" : "desc";
-            let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
             let sType = (e.getSource().getId() === "sortDate") ? "date" : "tag";
+            let sMode = (oList.sort[sType] === "desc") ? "asc" : "desc";
+            let sIcon = (sMode === "desc") ? "sap-icon://sort-ascending" : "sap-icon://sort-descending";
             this.sortList(sMode, sType);
             e.getSource().setIcon(sIcon);
         },
