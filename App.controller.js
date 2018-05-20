@@ -26,9 +26,7 @@ sap.ui.define([
             let iMult = bDesc ? 1 : -1 ;
             if(oList.getItems().length > 1){
                 oListModel.getData().noteList.sort((a,b)=>{
-                    let sDateA = oListModel.getProperty(a.getBindingContextPath()).date;
-                    let sDateB = oListModel.getProperty(b.getBindingContextPath()).date;
-                    let iRes = (a>b) ? 1 : ((a<b) ? -1 : 0);
+                    let iRes = (a.date>b.date) ? 1 : ((a.date<b.date) ? -1 : 0);
                     return iRes * iMult
                 });
                 oListModel.refresh();
