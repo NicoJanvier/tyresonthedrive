@@ -27,7 +27,7 @@
           horizontal="false">
           <content>
             <List
-              items="{ListModel>/noteList}">
+              items="{path: 'ListModel>/noteList', sorter: {path: 'date'}}">
               <CustomListItem>
                 <Panel
                   expanded="true">
@@ -54,56 +54,10 @@
                     </VBox>
                   </content>
                 </Panel>
-                <!-- <HBox
-                  justifyContent="SpaceBetween">
-                  <Text text="{ListModel>note}"/>
-                  <VBox
-                    justifyContent="SpaceAround">
-                    <Button
-                    icon="sap-icon://decline"
-                    press= "onDeleteNote"/>
-                  </VBox>              
-                </HBox> -->
               </CustomListItem>
             </List>
           </content>
         </ScrollContainer>
       </content>
     </Page>
-      <!-- <VBox>
-        <Panel
-              headerText="Please enter you thought."
-              width="100%">
-              <content>
-                <VBox>
-                  <TextArea
-                    width="100%"
-                    growing="true"
-                    valueLiveUpdate="true"
-                    value="{InputModel>/InputValue}"/>
-                  <Button
-                    text="Submit"
-                    press="saveNote"/>
-                </VBox>
-              </content>
-        </Panel>
-        <List
-          items="{ListModel>/noteList}">
-          <CustomListItem>
-            <HBox
-              justifyContent="SpaceBetween">
-              <Text text="{ListModel>note}"/>
-              <VBox
-                justifyContent="SpaceAround">
-                <Button
-                icon="sap-icon://decline"
-                press= "onDeleteNote"/>
-                <Button
-                icon="sap-icon://edit"
-                press= "onEditNote"/>
-              </VBox>              
-            </HBox>
-          </CustomListItem>
-        </List>
-      </VBox> -->
 </mvc:View>
